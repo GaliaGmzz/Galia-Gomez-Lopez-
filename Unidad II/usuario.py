@@ -1,4 +1,17 @@
-class Usuario:
-    def __init__(self, nombre, identificador):
-        self.nombre = nombre
-        self.identificador = identificador
+from Modelos.persona import Persona 
+from abc import ABC, abstractmethod
+
+class Usuario (Persona, ABC):
+    def __init__(self, nombre, identificador, tipo_usuario):
+        super().__init__(nombre, identificador)
+        self.__tipo_usuario = tipo_usuario
+
+    def getTipoUsuario(self):
+        return self.__tipo_usuario
+    
+    def __str__(self):
+        return f"{super().__str__()} - {self.__tipo_usuario}"
+    
+    @abstractmethod
+    def descripcion(self):
+        pass
